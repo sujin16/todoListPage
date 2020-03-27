@@ -1,0 +1,36 @@
+body{
+    padding: 80px;
+}
+header{
+    text-align: center;
+    overflow: hidden;
+}
+#addBtn{
+    float: right;
+}
+.wrap{
+    clear: both;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+}
+.todo,.doing,.done{
+    margin: 60px 0px;
+    width: 400px;
+}
+.block{
+    background-color: white;
+    border: 3px solid gray;
+    padding: 10px;
+}
+ul{
+    background-color: whitesmoke;
+}
+
+li{
+    list-style-type: none;
+}
+footer{
+    margin-top:10px;
+    clear: both;
+}

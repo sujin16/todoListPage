@@ -1,0 +1,60 @@
+@charset "EUC-KR";
+body{
+    padding: 80px;
+}
+header{
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+#backBtn{
+    float: left;
+}
+.wrap{
+   clear: both;
+   margin:0 auto;
+   width: 750px;
+   margin-bottom: 60px; 
+   padding-left: 30px;
+   border:2px solid black;
+}
+.title,.name,.sequence{
+    font-size: 20px;
+    margin: 40px 0px;
+    margin-top: 60px;
+}
+.title > input, .name >input ,.sequence > form{
+    margin-top: 20px;
+    width: 350px;
+} 
+.sequence > form{
+    margin-left: -auto;
+}
+.button{
+    margin-top: 100px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.block{
+    background-color: white;
+    border: 3px solid gray;
+    padding: 10px;
+}
+.sequenceRadio{
+    margin-left:20px;
+    margin-right:10px;
+    
+}
+ul{
+    background-color: whitesmoke;
+}
+
+li{
+    list-style-type: none;
+}
+footer{
+    margin-top:10px;
+    clear: both;
+}
