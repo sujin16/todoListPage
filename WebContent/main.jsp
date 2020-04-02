@@ -17,16 +17,22 @@
 <meta >
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/main.css">
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="./webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="./webjars/jquery/3.4.0/dist/jquery.min.js"></script>
+<script src="./webjars/bootstrap/4.3.1/dist/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a9f6f38102.js" crossorigin="anonymous"></script>
 <script>
 
 	window.onload = function() {
 		document.getElementById('formBtn').onclick = function() {
 			document.getElementById('form').submit();
 		};
+		
 		var resultNum = <%=resultNum%>;
 		if(resultNum ==0){
-			alert('add todo');
+			var addTodo = document.getElementById("addTodo");
+			addTodo.style.display='block';
+			addTodo.innerHTML = "<h3><font color='black'>"+"why don't you something to do ? "+"</font></h3>";
 		}
 		
 	};
@@ -35,6 +41,7 @@
 		if(index ==1){
 			alert('update');
 			document.getElementById('todo1').action ="${pageContext.request.contextPath}/todoUpdate";
+			document.getElementById('todo1').submit();
 		}
 		if(index ==2){
 			alert('delete');
@@ -43,18 +50,13 @@
 		}
 	}
 	
-</script>
-<script>
-	
 </script>	
-<script src="https://kit.fontawesome.com/a9f6f38102.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
 	<header>
 		<h2>I CAN DO IT</h2>
 		<form action="${pageContext.request.contextPath}/todoForm" method="get">
-			<input type="submit" id="formBtn"class="btn btn-dark" value="Enroll TODO" style="float: right;">
+			<input type="submit" id="formBtn" class="btn btn-dark" value="Enroll TODO" style="float: right;">
 		</form>
 	</header>
 	<section class="wrap">
@@ -125,6 +127,7 @@
 			</ul>
 		</div>
 	</section>
+	<div id="addTodo" style="text-align: center; margin-top:30px; margin-bottom:130px; display:none;"></div>
 	<footer>
 		<div class="card text-center">
 			<div class="card-header">hello1234@naver.com</div>
