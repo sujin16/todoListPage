@@ -1,36 +1,55 @@
-body{
-    padding: 80px;
-}
-header{
-    text-align: center;
-    overflow: hidden;
-}
-#addBtn{
-    float: right;
-}
-.wrap{
-    clear: both;
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
-}
-.todo,.doing,.done{
-    margin: 60px 0px;
-    width: 400px;
-}
-.block{
-    background-color: white;
-    border: 3px solid gray;
-    padding: 10px;
-}
-ul{
-    background-color: whitesmoke;
+body {
+	padding: 80px;
 }
 
-li{
-    list-style-type: none;
+header {
+	text-align: center;
+	overflow: hidden;
 }
-footer{
-    margin-top:10px;
-    clear: both;
+#formBtn{
+	float: right;
+}
+#deleteBtn {
+ 	float: right;
+ }
+.wrap {
+	clear: both;
+	flex-direction: row;
+	display: flex;
+	justify-content: space-between;
+}
+
+.todo, .doing, .done {
+	clear: both;
+	margin: 60px 0px;
+	width: 400px;
+	text-align: left;
+}
+form.card{
+	background: red;
+}
+.card > input ,.card > button {
+	border: 3px solid black; 
+	
+}
+.card > input {
+	clear:both;
+	margin-top: 130px; 
+}
+
+.block {
+	background-color: white;
+	border: 3px solid gray;
+	padding: 10px;
+}
+
+li {
+	list-style-type: none;
+	margin-top: 20px;
+}
+
+
+footer {
+	margin-top: 10px;
+	clear: both;
 }

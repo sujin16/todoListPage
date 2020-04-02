@@ -3,6 +3,7 @@ package kr.or.todolist.dto;
 public class TodoDto {
 	private Long id;
 	private String name;
+	private String regDate;
 	private int sequence;
 	private String title;
 	private String type;
@@ -28,6 +29,15 @@ public class TodoDto {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+
 	public int getSequence() {
 		return sequence;
 	}
@@ -46,10 +56,13 @@ public class TodoDto {
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	@Override
 	public String toString() {
-		return "id=" + id + ", name=" + name + ", sequence=" + sequence + ", title=" + title + ", type=" + type;
+		return "[id=" + id + ", name=" + name + ", regDate=" + regDate + ", sequence=" + sequence + ", title="
+				+ title + ", type=" + type + "]";
 	}
+
 	
 	
 

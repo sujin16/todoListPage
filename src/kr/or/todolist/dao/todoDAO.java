@@ -52,6 +52,9 @@ public class TodoDao {
 					String type= rs.getString(i++);
 					String regdate= rs.getString(i++);
 					TodoDto todo = new TodoDto(title,name,sequence);
+					todo.setId(id);
+					todo.setRegDate(regdate);
+					todo.setType(type);
 					todoList.add(todo);
 				}
 			}catch (Exception e) {
@@ -65,14 +68,14 @@ public class TodoDao {
 		
 	}
 
-	public int updateTodo(TodoDto todo) {
+	public int updateTodo(Long id, String type) {
 		int updateCount =0;
 		
 		String sql = "UPDATE todo SET type =? where id =?";
 		try(Connection conn = JDBCConnect.getConnection();
 				PreparedStatement ps =conn.prepareStatement(sql)) {
-			ps.setString(1,todo.getType());
-			ps.setLong(2, todo.getId());
+			ps.setString(1,type);
+			ps.setLong(2, id);
 			updateCount = ps.executeUpdate();
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -80,4 +83,20 @@ public class TodoDao {
 		}
 		return updateCount;
 	}
+	
+	public int deleteTodo(Long id) {
+		int deleteCount =0;
+		
+		String sql = "DELETE FROM todo WHERE id =?";
+		try(Connection conn = JDBCConnect.getConnection();
+				PreparedStatement ps =conn.prepareStatement(sql)) {
+			ps.setLong(1, Long.valueOf(id));
+			deleteCount = ps.executeUpdate();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return deleteCount;
+	}
+
 }

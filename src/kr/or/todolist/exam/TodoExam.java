@@ -13,9 +13,11 @@ public class TodoExam {
 		TodoDao dao =new TodoDao();
 		List<TodoDto> todoList = new ArrayList<>();
 		todoList = dao.getTodos();
-		for(TodoDto todo : todoList) {
+		for (TodoDto todo : todoList) {
+		
 			System.out.println(todo.toString());
 		}
+		
 	}
 
 }
