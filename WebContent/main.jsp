@@ -54,6 +54,7 @@
 </head>
 <body>
 	<header>
+		<h5 id="clock">00:00</h5>
 		<h2>I CAN DO IT</h2>
 		<form action="${pageContext.request.contextPath}/todoForm" method="get">
 			<input type="submit" id="formBtn" class="btn btn-dark" value="Enroll TODO" style="float: right;">
@@ -139,4 +140,23 @@
 		</div>
 	</footer>
 </body>
+
+<script>
+	function printTime() {
+
+		var clock = document.getElementById("clock"); 
+		var now = new Date(); 
+		var nowTime = now.getFullYear() + " 년  " + (now.getMonth() + 1) + " 월 "
+				+ now.getDate() + " 일 " + now.getHours() + " : " + now.getMinutes()
+				+ " : " + now.getSeconds();
+
+		clock.innerHTML = nowTime; 
+		setTimeout("printTime()", 1000); 
+
+	}
+
+	window.onload = function() { // 페이지가 로딩되면 실행
+		printTime();
+	}
+</script>
 </html>
