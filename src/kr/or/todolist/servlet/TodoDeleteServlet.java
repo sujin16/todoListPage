@@ -45,7 +45,6 @@ public class TodoDeleteServlet extends HttpServlet {
 		} catch (NullPointerException e) {
 			System.out.println("no value");
 		}
-
 	}
 
 }

@@ -9,6 +9,7 @@
 	List<TodoDto> todoList = (ArrayList<TodoDto>) request.getAttribute("todoList");
 	List<TodoDto> doingList = (ArrayList<TodoDto>) request.getAttribute("doingList");
 	List<TodoDto> doneList = (ArrayList<TodoDto>) request.getAttribute("doneList");
+	int resultNum = (Integer)request.getAttribute("resultNum");
 %>
 <!DOCTYPE html>
 <html>
@@ -18,17 +19,16 @@
 <link rel="stylesheet" href="css/main.css">
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+
 	window.onload = function() {
 		document.getElementById('formBtn').onclick = function() {
 			document.getElementById('form').submit();
 		};
-	};
-	
-	window.onload= function(){
-		document.getElementById('updateBtn').onclick =function(){
-			alert('update');
-			document.getElementById('todo1').submit();
-		};
+		var resultNum = <%=resultNum%>;
+		if(resultNum ==0){
+			alert('add todo');
+		}
+		
 	};
 	
 	function buttonClick(index){
@@ -39,6 +39,7 @@
 		if(index ==2){
 			alert('delete');
 			document.getElementById('todo1').action ="${pageContext.request.contextPath}/todoDelete";
+			document.getElementById('todo1').submit();
 		}
 	}
 	
@@ -64,16 +65,15 @@
 					for (TodoDto todo : todoList) {
 				%>
 				<li>
-					<form id ="todo1" class="card" action="${pageContext.request.contextPath}/main" method="post" >	
+					<form id ="todo1" class="card" method="post">	
 						<button type="button" id="deleteBtn" onclick="buttonClick(2)"/><i class="fas fa-trash-alt"></i><button>
 						title <input type="text" value =<%=todo.getTitle() %> id="title"><br/>
 						Date <input type="text" value =<%=todo.getRegDate() %> id="regdate"><br/>
 						name<input type="text" value =<%=todo.getName() %> id="name" ><br/>
 						<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
 						<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
-						<button type="button" id="updateBtn"><i class="fas fa-arrow-right"></i></button>
+						<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
 					</form>
-					
 				</li>
 				<%
 					}
@@ -87,18 +87,15 @@
 					for (TodoDto todo : doingList) {
 				%>
 				<li>
-					<form id ="todo1" class="card" action="${pageContext.request.contextPath}/main" method="post">
-						<button type="button" id="deleteBtn" onclick="delete()"/><i class="fas fa-trash-alt"></i><button>
+					<form id ="todo1" class="card" method="post">	
+						<button type="button" id="deleteBtn" onclick="buttonClick(2)"/><i class="fas fa-trash-alt"></i><button>
 						title <input type="text" value =<%=todo.getTitle() %> id="title"><br/>
 						Date <input type="text" value =<%=todo.getRegDate() %> id="regdate"><br/>
 						name<input type="text" value =<%=todo.getName() %> id="name" ><br/>
 						<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
 						<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
-						<input type="hidden" id="buttonType" value="" >	
-						<button type="button" id="updateBtn"><i class="fas fa-arrow-right"></i></button>
-						
+						<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
 					</form>
-					
 				</li>
 				<%
 					}
@@ -112,17 +109,15 @@
 					for (TodoDto todo : doneList) {
 				%>
 				<li>
-					<form id ="todo1" class="card" action="${pageContext.request.contextPath}/main" method="post">
-						<button type="button" id="deleteBtn" onclick="delete()"/><i class="fas fa-trash-alt"></i><button>
+					<form id ="todo1" class="card" method="post">	
+						<button type="button" id="deleteBtn" onclick="buttonClick(2)"/><i class="fas fa-trash-alt"></i><button>
 						title <input type="text" value =<%=todo.getTitle() %> id="title"><br/>
 						Date <input type="text" value =<%=todo.getRegDate() %> id="regdate"><br/>
 						name<input type="text" value =<%=todo.getName() %> id="name" ><br/>
 						<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
 						<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
-						<input type="hidden" id="buttonType" value="" >
-						<button type="button" id="updateBtn"><i class="fas fa-arrow-right"></i></button>
+						<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
 					</form>
-					
 				</li>
 				<%
 					}

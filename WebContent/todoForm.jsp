@@ -46,15 +46,15 @@
 		<form action="${pageContext.request.contextPath}/todoAdd" method="post" id="enroll">
 			<div class="title">
 				<h4>TITLE</h4>
-				<input type="text" name="title" id="title" placeholder="input title" maxlength="24">
+				<input type="text" name="title" id="title" placeholder="input title" maxlength="24" value="title">
 			</div>
 			<div class ="name">
 				<h4>NAME</h4>
-				<input type="text" name="name" id="name" placeholder="input name">
+				<input type="text" name="name" id="name" placeholder="input name" value="name">
 			</div>
 			<div class ="sequence">
 				<h4>SEQEUNCE</h4>
-			    <input type="number" name="sequence" id="sequence">
+			    <input type="number" name="sequence" id="sequence" value="sequence">
 			</div>
 			<div class ="button">
 				<input type="button" id="enrollBtn" value="ENROLL" class="btn btn-outline-dark btn" style="width:45%;" />
