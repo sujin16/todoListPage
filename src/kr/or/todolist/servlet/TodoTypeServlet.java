@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class TodoTypeServlet
  */
-@WebServlet("/TodoTypeServlet")
+@WebServlet("/todoType")
 public class TodoTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     public TodoTypeServlet() {

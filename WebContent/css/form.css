@@ -28,7 +28,7 @@ header{
     margin : 15px 0px;
 } 
 .title >input , .name >input, .sequence >input{
-	width:300px;
+	width:80px;
 }
 .button{
     display: flex;
@@ -40,6 +40,9 @@ header{
 .sequenceRadio{
     margin-left:20px;
     margin-right:10px;   
+}
+.title > div{
+	margin-top: 30px;
 }
 
 footer{

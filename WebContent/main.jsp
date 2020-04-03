@@ -16,28 +16,19 @@
 <head>
 <meta >
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="./webjars/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="./webjars/jquery/3.4.0/dist/jquery.min.js"></script>
 <script src="./webjars/bootstrap/4.3.1/dist/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/a9f6f38102.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/main.css">
 <script>
-
-	window.onload = function() {
-		document.getElementById('formBtn').onclick = function() {
-			document.getElementById('form').submit();
-		};
-		
-		var resultNum = <%=resultNum%>;
-		if(resultNum ==0){
-			var addTodo = document.getElementById("addTodo");
-			addTodo.style.display='block';
-			addTodo.innerHTML = "<h3><font color='black'>"+"why don't you something to do ? "+"</font></h3>";
-		}
-		
-	};
 	
 	function buttonClick(index){
+		if(index ==0){
+			document.getElementById('todo0').action ="${pageContext.request.contextPath}/todoForm";
+			document.getElementById('todo0').submit();
+		}
+		
 		if(index ==1){
 			alert('update');
 			document.getElementById('todo1').action ="${pageContext.request.contextPath}/todoUpdate";
@@ -48,7 +39,14 @@
 			document.getElementById('todo1').action ="${pageContext.request.contextPath}/todoDelete";
 			document.getElementById('todo1').submit();
 		}
+		if(index ==3){
+			alert('edit');
+			document.getElementById('todo1').action ="${pageContext.request.contextPath}/todoEdit";
+			document.getElementById('todo1').submit();
+		}
+		
 	}
+	
 	
 </script>	
 </head>
@@ -56,8 +54,8 @@
 	<header>
 		<h5 id="clock">00:00</h5>
 		<h2>I CAN DO IT</h2>
-		<form action="${pageContext.request.contextPath}/todoForm" method="get">
-			<input type="submit" id="formBtn" class="btn btn-dark" value="Enroll TODO" style="float: right;">
+		<form id="todo0" method="get" >
+			<input type="button" onclick="buttonClick(0)" id="formBtn" class="btn btn-dark" value="Enroll TODO" style="float: right;">
 		</form>
 	</header>
 	<section class="wrap">
@@ -68,14 +66,20 @@
 					for (TodoDto todo : todoList) {
 				%>
 				<li>
-					<form id ="todo1" class="card" method="post">	
-						<button type="button" id="deleteBtn" onclick="buttonClick(2)"/><i class="fas fa-trash-alt"></i><button>
-						title <input type="text" value =<%=todo.getTitle() %> id="title"><br/>
-						Date <input type="text" value =<%=todo.getRegDate() %> id="regdate"><br/>
-						name<input type="text" value =<%=todo.getName() %> id="name" ><br/>
-						<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
-						<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
-						<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
+					<form id ="todo1" method="post">
+						<div class="card" style="width: 18rem;">
+							<img src="olaf.png" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h4 class="card-title">title : <%=todo.getTitle()%></h4>
+								<p class="card-text" id="title"><%=todo.getRegDate()%>&nbsp;&nbsp;&nbsp;<%=todo.getName()%></p>
+								<a href="#" class="btn btn-primary" id="sequence"><%=todo.getSequence()%>&nbsp;&nbsp;st</a>
+								<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
+								<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
+								<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
+								<button type="button" id="deleteBtn" onclick="buttonClick(2)" /><i class="fas fa-trash-alt"></i></button>
+								<button type="button" id="editBtn" onclick="buttonClick(3)" /><i class="far fa-edit"></i></button>
+							</div>
+						</div>
 					</form>
 				</li>
 				<%
@@ -90,14 +94,20 @@
 					for (TodoDto todo : doingList) {
 				%>
 				<li>
-					<form id ="todo1" class="card" method="post">	
-						<button type="button" id="deleteBtn" onclick="buttonClick(2)"/><i class="fas fa-trash-alt"></i><button>
-						title <input type="text" value =<%=todo.getTitle() %> id="title"><br/>
-						Date <input type="text" value =<%=todo.getRegDate() %> id="regdate"><br/>
-						name<input type="text" value =<%=todo.getName() %> id="name" ><br/>
-						<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
-						<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
-						<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
+					<form id ="todo1" method="post">
+						<div class="card" style="width: 18rem;">
+							<img src="olaf.png" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">title : <%=todo.getTitle()%></h5>
+								<p class="card-text" id="title"><%=todo.getRegDate()%>&nbsp;&nbsp;&nbsp;<%=todo.getName()%></p>
+								<a href="#" class="btn btn-primary" id="sequence"><%=todo.getSequence()%>&nbsp;&nbsp;st</a>
+								<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
+								<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
+								<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
+								<button type="button" id="deleteBtn" onclick="buttonClick(2)" /><i class="fas fa-trash-alt"></i></button>
+								<button type="button" id="editBtn" onclick="buttonClick(3)" /><i class="far fa-edit"></i></button>
+							</div>
+						</div>
 					</form>
 				</li>
 				<%
@@ -112,14 +122,20 @@
 					for (TodoDto todo : doneList) {
 				%>
 				<li>
-					<form id ="todo1" class="card" method="post">	
-						<button type="button" id="deleteBtn" onclick="buttonClick(2)"/><i class="fas fa-trash-alt"></i><button>
-						title <input type="text" value =<%=todo.getTitle() %> id="title"><br/>
-						Date <input type="text" value =<%=todo.getRegDate() %> id="regdate"><br/>
-						name<input type="text" value =<%=todo.getName() %> id="name" ><br/>
-						<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
-						<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
-						<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
+					<form id ="todo1" method="post">
+						<div class="card" style="width: 18rem;">
+							<img src="olaf.png" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">title : <%=todo.getTitle()%></h5>
+								<p class="card-text" id="title"><%=todo.getRegDate()%>&nbsp;&nbsp;&nbsp;<%=todo.getName()%></p>
+								<a href="#" class="btn btn-primary" id="sequence"><%=todo.getSequence()%>&nbsp;&nbsp;st</a>
+								<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
+								<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
+								<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
+								<button type="button" id="deleteBtn" onclick="buttonClick(2)" /><i class="fas fa-trash-alt"></i></button>
+								<button type="button" id="editBtn" onclick="buttonClick(3)" /><i class="far fa-edit"></i></button>
+							</div>
+						</div>
 					</form>
 				</li>
 				<%
@@ -142,21 +158,27 @@
 </body>
 
 <script>
-	function printTime() {
 
+	function printTime() {
 		var clock = document.getElementById("clock"); 
 		var now = new Date(); 
-		var nowTime = now.getFullYear() + " 년  " + (now.getMonth() + 1) + " 월 "
-				+ now.getDate() + " 일 " + now.getHours() + " : " + now.getMinutes()
-				+ " : " + now.getSeconds();
-
+		var nowTime = now.getFullYear() + " . " + (now.getMonth() + 1) + " . "
+ 				+ now.getDate() +"&nbsp;&nbsp;&nbsp;&nbsp;" + now.getHours() + " : " + now.getMinutes();
+	
 		clock.innerHTML = nowTime; 
 		setTimeout("printTime()", 1000); 
-
-	}
-
-	window.onload = function() { // 페이지가 로딩되면 실행
+	
+	};
+	window.onload = function() {
 		printTime();
-	}
+		
+		var resultNum = <%=resultNum%>;
+		if(resultNum ==0){
+			var addTodo = document.getElementById("addTodo");
+			addTodo.style.display='block';
+			addTodo.innerHTML = "<h3><font color='black'>"+"why don't you something to do ? "+"</font></h3>";
+		}
+		
+	};
 </script>
 </html>

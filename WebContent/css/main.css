@@ -1,5 +1,6 @@
 body {
 	padding: 80px;
+	background: black;
 }
 
 header {
@@ -9,25 +10,19 @@ header {
 #formBtn{
 	float: right;
 }
-#deleteBtn {
- 	float: right;
- }
 .wrap {
 	clear: both;
 	flex-direction: row;
 	display: flex;
-	justify-content: space-between;
 }
 
 .todo, .doing, .done {
 	clear: both;
 	margin: 60px 0px;
-	width: 400px;
-	text-align: left;
+	width: 30%;
 }
-.card > input {
-	clear:both;
-	margin-top: 130px; 
+#updateBtn, #deleteBtn, #editBtn{
+	margin-right: 30px;
 }
 
 .block {
