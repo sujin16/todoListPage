@@ -61,18 +61,17 @@
 	<section class="wrap">
 		<div class="todo">
 			<h4 class="block">TODO</h4>
-			<ul>
+			<ul style="width:100%; list-style:none; padding-left:0px;">
 				<%
 					for (TodoDto todo : todoList) {
 				%>
 				<li>
 					<form id ="todo1" method="post">
-						<div class="card" style="width: 18rem;">
-							<img src="olaf.png" class="card-img-top" alt="...">
+						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">title : <%=todo.getTitle()%></h4>
+								<h3 class="card-title"><%=todo.getTitle()%></h3>
 								<p class="card-text" id="title"><%=todo.getRegDate()%>&nbsp;&nbsp;&nbsp;<%=todo.getName()%></p>
-								<a href="#" class="btn btn-primary" id="sequence"><%=todo.getSequence()%>&nbsp;&nbsp;st</a>
+								<button type="button"  class="btn btn-primary" id="sequence" name="sequence" value="<%=todo.getSequence()%>"><%=todo.getSequence()%></button>
 								<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
 								<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
 								<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
@@ -89,18 +88,17 @@
 		</div>
 		<div class="doing">
 			<h4 class="block">DOING</h4>
-			<ul>
+			<ul style="width:100%; list-style:none; padding-left:0px;">
 				<%
 					for (TodoDto todo : doingList) {
 				%>
 				<li>
 					<form id ="todo1" method="post">
-						<div class="card" style="width: 18rem;">
-							<img src="olaf.png" class="card-img-top" alt="...">
+						<div class="card">
 							<div class="card-body">
-								<h5 class="card-title">title : <%=todo.getTitle()%></h5>
+								<h3 class="card-title"><%=todo.getTitle()%></h3>
 								<p class="card-text" id="title"><%=todo.getRegDate()%>&nbsp;&nbsp;&nbsp;<%=todo.getName()%></p>
-								<a href="#" class="btn btn-primary" id="sequence"><%=todo.getSequence()%>&nbsp;&nbsp;st</a>
+								<button type="button"  class="btn btn-primary" id="sequence" name="sequence" value="<%=todo.getSequence()%>"><%=todo.getSequence()%></button>
 								<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
 								<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
 								<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
@@ -117,18 +115,17 @@
 		</div>
 		<div class="done">
 			<h4 class="block">DONE</h4>
-			<ul>
+			<ul style="width:100%; list-style:none; padding-left:0px;">
 				<%
 					for (TodoDto todo : doneList) {
 				%>
 				<li>
 					<form id ="todo1" method="post">
-						<div class="card" style="width: 18rem;">
-							<img src="olaf.png" class="card-img-top" alt="...">
+						<div class="card" >
 							<div class="card-body">
-								<h5 class="card-title">title : <%=todo.getTitle()%></h5>
+								<h3 class="card-title"><%=todo.getTitle()%></h3>
 								<p class="card-text" id="title"><%=todo.getRegDate()%>&nbsp;&nbsp;&nbsp;<%=todo.getName()%></p>
-								<a href="#" class="btn btn-primary" id="sequence"><%=todo.getSequence()%>&nbsp;&nbsp;st</a>
+								<button type="button"  class="btn btn-primary" id="sequence" name="sequence" value="<%=todo.getSequence()%>"><%=todo.getSequence()%></button>
 								<input type="hidden" value =<%=todo.getId() %> id="id" name="id" >
 								<input type="hidden" value =<%=todo.getType() %> id="type" name="type" >
 								<button type="button" id="updateBtn" onclick="buttonClick(1)"><i class="fas fa-arrow-right"></i></button>
@@ -178,6 +175,22 @@
 			addTodo.style.display='block';
 			addTodo.innerHTML = "<h3><font color='black'>"+"why don't you something to do ? "+"</font></h3>";
 		}
+		
+		var sequenceArray = document.getElementsByName("sequence");
+	
+		for(var i=0; i<sequenceArray.length;i++){
+			var sequenceButton = sequenceArray[i];
+			if(sequenceButton.value == "1"){
+				sequenceButton.className= "btn btn-primary";
+			}
+			if(sequenceButton.value == "2"){
+				sequenceButton.className= "btn btn-success";
+			}
+			if(sequenceButton.value == "3"){
+				sequenceButton.className= "btn btn-warning";
+			}
+		}
+		
 		
 	};
 </script>
