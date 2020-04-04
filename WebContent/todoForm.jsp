@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="enrollBool" scope="page" value="false"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,27 +14,43 @@
 <script src="https://kit.fontawesome.com/a9f6f38102.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/form.css">
 <script>
-	window.onload = function() {
-		
-	};
 	
-	function enroll(index){
-		var title = document.getElementById('title').value;
-		var name = document.getElementById('name').value;
-		var sequence = document.getElementById('sequence').value;
-
-		if (title == "") {
-			alert('title')
-			return;
+	function keyUp(obj){
+		if(obj.id == 'title'){
+			if(obj.value ==''){
+				alert('input title');
+				return;
+			}
+			if(obj.value.length <2 ){
+				alert('title length 2 ~ 24');
+				return;
+			}
 		}
-		if (name == "") {
-			alert('name')
-			return;
+		if(obj.id == 'name'){
+			if(obj.value ==''){
+				alert('input name');
+				return;
+			}
+			if(obj.value.length >5 ){
+				alert('name length 1 ~ 4');
+				return;
+			}
 		}
-		if (sequence <= 0) {
-			alert('sequence')
-			return;
+		if(obj.id == 'sequence'){
+			if(obj.value ==''){
+				alert('input sequence');
+				return;
+			}
+			if(obj.value >3 ){
+				alert('input sequence 1 ~ 3');
+				obj.value ='1';
+				return;
+			}
 		}
+		<c:set var="enrollBool" value="true"/>
+	}
+	
+	function enroll(){
 		alert('sucess enroll');
 		document.getElementById('enroll').action ="${pageContext.request.contextPath}/todoAdd";
 		document.getElementById('enroll').submit();
@@ -53,29 +70,20 @@
 			<div class="title">
 				<h4>TITLE</h4>
 				<input type="text" name="title" id="title" placeholder="input title"
-					maxlength="24" value="title" style="width: 90%; height: 50px;">
-				<div class="alert alert-danger" role="alert" style="width: 90%; margin-top:10px;">
- 					 A simple danger alert—check it out!
-				</div>
+					maxlength="24" style="width: 90%; height: 50px;"  onKeyUp="keyUp(this);">
 			</div>
 			<div class="name">
 				<h4>NAME</h4>
 				<input type="text" name="name" id="name" placeholder="input name"
-					value="name" style="width: 90%; height: 50px;">
-				<div class="alert alert-danger" role="alert" style="width: 90%; margin-top:10px;">
- 					 A simple danger alert—check it out!
-				</div>
-			</div>
+					style="width: 90%; height: 50px;" onKeyUp="keyUp(this);">
 			<div class="sequence">
 				<h4>SEQEUNCE</h4>
-				<input type="number" name="sequence" id="sequence" value="sequence"
-				style="width: 90%; height: 50px;">
+				<input type="number" name="sequence" id="sequence" 	placeholder="input sequence" 
+				style="width: 90%; height: 50px;" onKeyUp="keyUp(this);">
 			</div>
 			<div class="button">
-				<input type="button" id="enrollBtn" value="ENROLL"
-					class="btn btn-outline-dark btn" style="width: 45%;" onclick="enroll(1)" /> <input
-					type="reset" id="deleteBtn" value="DELETE"
-					class="btn btn-outline-dark btn" style="width: 45%;" />
+				<input type="button" id="enrollBtn" value="ENROLL" class="btn btn-outline-dark btn" style="width: 45%;" onclick="enroll()" />
+				<input type="reset" id="deleteBtn" value="DELETE" class="btn btn-outline-dark btn" style="width: 45%;" />
 			</div>
 		</form>
 	</section>

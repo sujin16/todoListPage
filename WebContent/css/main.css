@@ -1,6 +1,5 @@
 body {
 	padding: 80px;
-	background: black;
 }
 
 header {
@@ -18,9 +17,10 @@ header {
 
 .todo, .doing, .done {
 	clear: both;
-	margin: 60px 0px;
-	width: 30%;
+	padding: 30px;
+	width: 33%;
 }
+
 #updateBtn, #deleteBtn, #editBtn{
 	margin-right: 30px;
 }
