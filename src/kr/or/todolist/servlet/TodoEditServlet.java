@@ -33,27 +33,13 @@ public class TodoEditServlet extends HttpServlet {
 		System.out.println("post call");
 		try {
 			String id = request.getParameter("id");
-			String type = request.getParameter("type");
-			TodoDao dao = new TodoDao();
-
-			if (type.equals("TODO")) {
-				int deleteCount = dao.updateTodo(Long.parseLong(id), "DOING");
-				System.out.println(deleteCount);
-
-			}
-			if (type.equals("DOING")) {
-				int deleteCount = dao.updateTodo(Long.parseLong(id), "DONE");
-				System.out.println(deleteCount);
-
-			}
-			if (type.equals("DONE")) {
-				int deleteCount = dao.deleteTodo(Long.parseLong(id));
-				System.out.println(deleteCount);
-			}
-
-			String context = request.getContextPath();
-			response.sendRedirect(context + "/main");
-
+			System.out.println(id);
+			request.setAttribute("id", id);
+			request.setAttribute("type","edit");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/todoForm.jsp");
+			dispatcher.forward(request, response);	
+			
 		} catch (NullPointerException e) {
 			System.out.println("no value");
 		}

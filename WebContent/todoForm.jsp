@@ -3,6 +3,16 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="enrollBool" scope="page" value="false"/>
+<%
+	try {
+		System.out.println(request.getAttribute("id"));
+	
+	} catch (NullPointerException e) {
+		System.out.println("no value");
+	}
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
